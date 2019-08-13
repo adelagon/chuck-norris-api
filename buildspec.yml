@@ -15,7 +15,7 @@ artifacts:
   files:
     - 'template.yml'
     - 'scripts/**/*'
-    - 'helloworld/**/*.py'
+    - 'chucknorris/**/*.py'
     - 'appspec.yml'
     - 'requirements.txt'
     - 'setup.py'
