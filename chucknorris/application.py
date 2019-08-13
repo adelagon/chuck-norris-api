@@ -1,5 +1,7 @@
 #!flask/bin/python
 import json
+import requests
+import datetime
 from flask import Flask, Response
 from helloworld.flaskrun import flaskrun
 
@@ -7,11 +9,14 @@ application = Flask(__name__)
 
 @application.route('/', methods=['GET'])
 def get():
-    return Response(json.dumps({'Output': 'Hello World'}), mimetype='application/json', status=200)
+	response = requests.get("https://api.chucknorris.io/jokes/random")
+	joke = response.json()["value"]
+	data = {
+		'joke': joke,
+		'timestamp': datetime.datetime.utcnow().isoformat()
+	}
+	return Response(json.dumps(data), mimetype='application/json', status=200)
 
-@application.route('/', methods=['POST'])
-def post():
-    return Response(json.dumps({'Output': 'Hello World'}), mimetype='application/json', status=200)
 
 if __name__ == '__main__':
     flaskrun(application)
