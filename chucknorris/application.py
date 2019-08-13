@@ -3,7 +3,7 @@ import json
 import requests
 import datetime
 from flask import Flask, Response
-from helloworld.flaskrun import flaskrun
+from chucknorris.flaskrun import flaskrun
 
 application = Flask(__name__)
 
